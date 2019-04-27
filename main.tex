@@ -7,7 +7,6 @@
 % \usepackage[british,UKenglish,USenglish,english,american]{babel}
 \usepackage[a4paper]{geometry}
 % \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-% \usepackage{xcolor}
 
 % \usepackage[dvipsnames]{xcolor}
 \usepackage{xcolor}
@@ -38,11 +37,12 @@ firstnumber=1,
 bgcolor=black %pink,%bg,
 % frame=single
 }
+
 \usepackage{listings}
 
 %% Useful packages
 \usepackage{url}
-\usepackage{circuitikz}
+% \usepackage{circuitikz}
 \usepackage{siunitx}
 \usepackage[autostyle=true]{csquotes}
 \usepackage{subcaption}
@@ -54,42 +54,6 @@ bgcolor=black %pink,%bg,
 \usepackage{appendix}
 % \renewcommand{\appendixpagename}{Annexes}
 % \renewcommand{\appendixtocname}{Annexes}
-
-
-\lstset{ 
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                 % sets automatic line breaking
-  captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  % firstnumber=1000,                % start line enumeration with line 1000
-  frame=single,	                   % adds a frame around the code
-  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{blue},       % keyword style
-  language=C++,                 % the language of the code
-  morekeywords={DigitalOut},            % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,          % underline spaces within strings only
-  showtabs=false,                  % show tabs within strings adding particular underscores
-  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{mymauve},     % string literal style
-  tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-  basicstyle=\ttfamily,
-  keywordstyle=\color{blue}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  commentstyle=\color{mygreen}\ttfamily,
-  morecomment=[l][\color{magenta}]{\#}
-}
-
 
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 \usepackage{cleveref}
@@ -170,6 +134,19 @@ In order to execute our first example using the STM nucleo board , the following
 \begin{listing}[ht]
 \inputmintedcpp{code_snippets/mbed-blink.cpp}
 \caption{Mbed: Blink code\label{listing:Blink_code}}
+\end{listing}
+
+\begin{listing}
+\inputminted[style=fruity,%monokai,
+             linenos=true,
+             firstnumber=1,
+             bgcolor=black, %pink,%bg,
+             % frame=single,
+             firstline=3,
+             lastline=5
+]
+{cpp}
+{code_snippets/ac6-blink.cpp}
 \end{listing}
 
 \begin{figure}
