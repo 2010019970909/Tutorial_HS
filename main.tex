@@ -1,11 +1,12 @@
-\documentclass[a4paper, 11pt, openany, oneside]{book}
-\usepackage[printwatermark]{xwatermark}
-\usepackage{fontspec}
+\documentclass[a4paper, 11pt, openany, oneside, english]{book}
+% \usepackage[utf8]{inputenc}
 \usepackage{polyglossia}
+\usepackage{fontspec}
+% \usepackage[T1]{fontenc}
 % \setmainlanguage{english}
 
-% \usepackage[british,UKenglish,USenglish,english,american]{babel}
-\usepackage[a4paper]{geometry}
+%\usepackage[british,UKenglish,USenglish,english,american]{babel}
+%\usepackage[a4paper]{geometry}
 % \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 % \usepackage[dvipsnames]{xcolor}
@@ -14,7 +15,10 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
-\definecolor{pink}{rgb}{1,0.75294117647058823529411764705882,0.7960784313725490196078431372549}
+%\definecolor{pink}{rgb}{1,0.75294117647058823529411764705882,0.7960784313725490196078431372549}
+
+%% Watermark
+\usepackage[printwatermark]{xwatermark}
 
 %% Code Highlighting
 \usepackage{minted}
@@ -25,23 +29,13 @@
              firstnumber=1,
              bgcolor=black, %pink,%bg,
              % frame=single,
-]
-{cpp}
-{#1}
+]{cpp}{#1}
 }
-
-\newminted{l}{
-style=monokai,
-linenos=true,
-firstnumber=1,
-bgcolor=black %pink,%bg,
-% frame=single
-}
-
-\usepackage{listings}
+% \usepackage{listings}
 
 %% Useful packages
 \usepackage{url}
+\usepackage{tikz}
 % \usepackage{circuitikz}
 \usepackage{siunitx}
 \usepackage[autostyle=true]{csquotes}
@@ -49,7 +43,6 @@ bgcolor=black %pink,%bg,
 \usepackage{mathtools}
 \usepackage{graphicx}
 \graphicspath{{./figures/}}
-\usepackage{tikz}
 
 \usepackage{appendix}
 % \renewcommand{\appendixpagename}{Annexes}
@@ -57,6 +50,17 @@ bgcolor=black %pink,%bg,
 
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 \usepackage{cleveref}
+
+% \newwatermark*[allpages,color=red!50,angle=54.736988270402746902813026801541,scale=3,xpos=0,ypos=0]{TOP SECRET}
+\newsavebox{\mybox}
+\savebox{\mybox}{\tikz[color=red,opacity=0.5]{\node{\textbf{TOP SECRET}};}}
+\newwatermark*[
+  allpages,
+  angle=54.736988270402746902813026801541,
+  scale=10,
+  xpos=-35,
+  ypos=35
+]{\usebox{\mybox}}
 
 %%% Use the package for UMONS cover page
 % the option describe the faculty you belong to
@@ -76,17 +80,6 @@ bgcolor=black %pink,%bg,
 \umonsSupervisor{Under the direction of Mr Carlos Alberto \textsc{VALDERRAMA SAKUYAMA}}
 % The date (or academic year)
 \umonsDate{2018-2019}
-
-% \newwatermark*[allpages,color=red!50,angle=54.736988270402746902813026801541,scale=3,xpos=0,ypos=0]{TOP SECRET}
-\newsavebox{\mybox}
-\savebox{\mybox}{\tikz[color=red,opacity=0.5]{\node{\textbf{TOP SECRET}};}}
-\newwatermark*[
-  allpages,
-  angle=54.736988270402746902813026801541,
-  scale=10,
-  xpos=-35,
-  ypos=35
-]{\usebox{\mybox}}
 
 \begin{document}
 \frontmatter
@@ -131,25 +124,17 @@ In order to execute our first example using the STM nucleo board , the following
 
 
 
-\begin{listing}[ht]
+\begin{listing}[!ht]
 \inputmintedcpp{code_snippets/mbed-blink.cpp}
-\caption{Mbed: Blink code\label{listing:Blink_code}}
+\caption{Mbed: Blink code\label{listing:mbed-Blink_code}}
 \end{listing}
 
-\begin{listing}
-\inputminted[style=fruity,%monokai,
-             linenos=true,
-             firstnumber=1,
-             bgcolor=black, %pink,%bg,
-             % frame=single,
-             firstline=3,
-             lastline=5
-]
-{cpp}
-{code_snippets/ac6-blink.cpp}
+\begin{listing}[!ht]
+\inputminted[style=fruity, linenos=true, bgcolor=black, firstline=62, lastline=86]{cpp}{code_snippets/ac6-blink.cpp}
+\caption{AC6 and Platform IO: Blink code\label{listing:ac6_PIO-Blink_code}}
 \end{listing}
 
-\begin{figure}
+\begin{figure}[!ht]
 \centering
 \includegraphics{mbed_blink_diag.pdf}
 \caption{Block diagram for the blink code}
